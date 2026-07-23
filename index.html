@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ChaosCtrl — The calm at the center of your chaos</title>
-<meta name="description" content="ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds to scroll. No lists to maintain. Just answers.">
+<meta name="description" content="Coming soon to iOS. ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. Join the waitlist.">
 <meta name="theme-color" content="#EAECF6">
 <link rel="canonical" href="https://elbarbary.github.io/chaosctrl-landing/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -14,11 +14,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://elbarbary.github.io/chaosctrl-landing/">
 <meta property="og:title" content="ChaosCtrl — The calm at the center of your chaos">
-<meta property="og:description" content="ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds. No lists. Just answers.">
+<meta property="og:description" content="Coming soon to iOS. ChaosCtrl surfaces the one thing that needs you now — and drafts the reply for you. Join the waitlist.">
 <meta property="og:image" content="https://elbarbary.github.io/chaosctrl-landing/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ChaosCtrl — the calm at the center of your chaos. An iOS second brain.">
+<meta property="og:image:alt" content="Coming soon to iOS. ChaosCtrl — the calm at the center of your chaos.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ChaosCtrl — The calm at the center of your chaos">
 <meta name="twitter:description" content="Your second brain that surfaces the one thing that needs you now, and drafts the reply for you.">
@@ -71,7 +71,69 @@
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; }
     html { scroll-behavior: auto; }
+    .wl-overlay, .wl-card { transition: none !important; }
   }
+
+  /* ---------- Waitlist modal ---------- */
+  .wl-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+    background: rgba(18,22,45,0.5);
+    backdrop-filter: blur(10px) saturate(140%); -webkit-backdrop-filter: blur(10px) saturate(140%);
+    opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
+  }
+  .wl-overlay.open { opacity: 1; visibility: visible; }
+  .wl-card {
+    position: relative; width: 100%; max-width: 420px; text-align: center;
+    padding: 34px 32px 26px; border-radius: 30px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88));
+    border: 1px solid rgba(255,255,255,0.8);
+    box-shadow: 0 40px 90px -30px rgba(30,35,80,0.5), inset 0 1px 0 rgba(255,255,255,0.9);
+    transform: translateY(16px) scale(0.98); transition: transform .28s cubic-bezier(.2,.8,.2,1);
+  }
+  .wl-overlay.open .wl-card { transform: translateY(0) scale(1); }
+  .wl-close {
+    position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; padding: 0;
+    border: none; border-radius: 11px; cursor: pointer;
+    background: rgba(20,24,48,0.06); color: #3A4056; font-size: 21px; line-height: 1;
+    display: flex; align-items: center; justify-content: center; transition: background .15s ease;
+  }
+  .wl-close:hover { background: rgba(20,24,48,0.12); }
+  .wl-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px 6px 11px; border-radius: 999px;
+    background: rgba(94,102,232,0.1); color: #4E4A7A; font-size: 12.5px; font-weight: 700;
+  }
+  .wl-badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #FF7A4A; box-shadow: 0 0 0 4px rgba(255,122,74,0.2); }
+  .wl-title { font-family: 'Inter Tight', -apple-system, system-ui, sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.8px; color: #0E1220; margin: 16px 0 0; }
+  .wl-sub { font-size: 15px; line-height: 1.5; color: #4C5370; margin: 10px auto 0; max-width: 330px; }
+  .wl-form { display: flex; flex-direction: column; gap: 10px; margin-top: 22px; }
+  .wl-form[hidden], .wl-success[hidden], .wl-note[hidden] { display: none; }
+  .wl-input {
+    width: 100%; padding: 14px 16px; border-radius: 14px;
+    border: 1px solid rgba(30,40,90,0.16); background: #fff; color: #0E1220;
+    font-size: 15px; font-family: inherit; outline: none; transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .wl-input:focus { border-color: #6B82F5; box-shadow: 0 0 0 4px rgba(107,130,245,0.18); }
+  .wl-submit {
+    width: 100%; padding: 14px; border-radius: 14px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: linear-gradient(150deg, #5468EC, #4E63E8); color: #fff; font-size: 15.5px; font-weight: 700; font-family: inherit;
+    box-shadow: 0 12px 26px -10px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+    transition: transform .12s ease, box-shadow .2s ease;
+  }
+  .wl-submit:hover { transform: translateY(-1px); box-shadow: 0 16px 30px -10px rgba(78,99,232,0.8), inset 0 1px 0 rgba(255,255,255,0.4); }
+  .wl-submit:disabled { opacity: 0.7; cursor: default; transform: none; }
+  .wl-note { font-size: 12.5px; color: #63698A; margin-top: 14px; }
+  .wl-success { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 0 4px; }
+  .wl-check {
+    width: 56px; height: 56px; border-radius: 50%; margin-bottom: 8px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(150deg, #7BE0D0, #2FB8A3); color: #fff; font-size: 28px; font-weight: 800;
+    box-shadow: 0 12px 24px -8px rgba(47,184,163,0.6);
+  }
+  .wl-success-title { font-family: 'Inter Tight', -apple-system, system-ui, sans-serif; font-size: 22px; font-weight: 800; color: #141830; }
+  .wl-success-sub { font-size: 14.5px; color: #4C5370; max-width: 300px; }
 </style>
 </head>
 <body>
@@ -101,7 +163,7 @@
         <a href="#how" style="color: #3A4056;">How it works</a>
         <a href="#pricing" style="color: #3A4056;">Pricing</a>
       </div>
-      <a href="#pricing" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 14px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 14.5px; box-shadow: 0 6px 18px -6px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">Get the app</a>
+      <a href="#" data-waitlist aria-haspopup="dialog" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 14px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 14.5px; box-shadow: 0 6px 18px -6px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">Get the app</a>
     </nav>
   </div>
 
@@ -112,12 +174,12 @@
     <div>
       <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px; background: rgba(255,255,255,0.5); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.7); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; color: #4E4A7A;">
         <span style="width: 7px; height: 7px; border-radius: 50%; background: #FF7A4A; box-shadow: 0 0 0 4px rgba(255,122,74,0.2);"></span>
-        Now capturing from any app
+        Coming soon to iOS
       </div>
       <h1 class="hero-title" style="font-size: 62px; line-height: 1.03; letter-spacing: -2px; font-weight: 800; margin: 22px 0 0; color: #0E1220; text-wrap: balance;">The calm at the center of your chaos.</h1>
       <p style="font-size: 19px; line-height: 1.55; color: #454C63; margin: 22px 0 0; max-width: 480px; text-wrap: pretty;">ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds to scroll. No lists to maintain. Just answers.</p>
       <div class="hero-cta" style="display: flex; align-items: center; gap: 14px; margin-top: 34px;">
-        <a href="#pricing" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 16px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 16px; box-shadow: 0 12px 30px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">
+        <a href="#" data-waitlist aria-haspopup="dialog" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 16px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 16px; box-shadow: 0 12px 30px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.05 12.53c-.02-2.02 1.65-2.99 1.72-3.04-.94-1.37-2.4-1.56-2.92-1.58-1.24-.13-2.42.73-3.05.73-.63 0-1.6-.71-2.63-.69-1.35.02-2.6.79-3.29 2-1.4 2.44-.36 6.05 1 8.03.67.97 1.46 2.06 2.5 2.02 1-.04 1.38-.65 2.6-.65 1.2 0 1.55.65 2.61.63 1.08-.02 1.76-.99 2.42-1.96.76-1.12 1.08-2.21 1.09-2.27-.02-.01-2.09-.8-2.11-3.18zM15.03 6.3c.55-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.53-.84 2.44.89.07 1.8-.45 2.35-1.11z"/></svg>
           Download on iOS
         </a>
@@ -317,7 +379,7 @@
           <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> 1,500 signals sorted a month</div>
           <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> 100 AI-drafted replies a month</div>
         </div>
-        <a href="#" style="display:block; text-align:center; margin-top:26px; padding:14px; border-radius:15px; background:#fff; color:#3D50D6; font-weight:700; font-size:15px; box-shadow:0 10px 24px -8px rgba(0,0,0,0.25);">Get ChaosCtrl — $1.99/mo</a>
+        <a href="#" data-waitlist aria-haspopup="dialog" style="display:block; text-align:center; margin-top:26px; padding:14px; border-radius:15px; background:#fff; color:#3D50D6; font-weight:700; font-size:15px; box-shadow:0 10px 24px -8px rgba(0,0,0,0.25);">Join the waitlist</a>
       </div>
     </div>
   </section>
@@ -334,8 +396,8 @@
           <svg viewBox="0 0 100 100" width="44" height="44" fill="none"><path d="M14 56 C 22 31 49 30 47 47 C 45 62 28 58 33 46 C 38 35 56 40 87 51" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h2 style="font-size:48px; line-height:1.05; letter-spacing:-1.6px; font-weight:800; margin:24px 0 0; color:#0E1220; text-wrap:balance;">End today in control.</h2>
-        <p style="font-size:18px; color:#454C63; margin:16px auto 0; max-width:460px; line-height:1.55;">$1.99 a month, cancel anytime. Your calmest morning is one download away.</p>
-        <a href="#" style="display:inline-flex; align-items:center; gap:10px; margin-top:32px; padding:16px 30px; border-radius:17px; background:linear-gradient(150deg,#5468EC,#4E63E8); color:#fff; font-weight:700; font-size:16.5px; box-shadow:0 14px 32px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.25);">
+        <p style="font-size:18px; color:#454C63; margin:16px auto 0; max-width:460px; line-height:1.55;">Coming soon to iOS. Join the waitlist and be first in line the day ChaosCtrl launches.</p>
+        <a href="#" data-waitlist aria-haspopup="dialog" style="display:inline-flex; align-items:center; gap:10px; margin-top:32px; padding:16px 30px; border-radius:17px; background:linear-gradient(150deg,#5468EC,#4E63E8); color:#fff; font-weight:700; font-size:16.5px; box-shadow:0 14px 32px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.25);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.05 12.53c-.02-2.02 1.65-2.99 1.72-3.04-.94-1.37-2.4-1.56-2.92-1.58-1.24-.13-2.42.73-3.05.73-.63 0-1.6-.71-2.63-.69-1.35.02-2.6.79-3.29 2-1.4 2.44-.36 6.05 1 8.03.67.97 1.46 2.06 2.5 2.02 1-.04 1.38-.65 2.6-.65 1.2 0 1.55.65 2.61.63 1.08-.02 1.76-.99 2.42-1.96.76-1.12 1.08-2.21 1.09-2.27-.02-.01-2.09-.8-2.11-3.18zM15.03 6.3c.55-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.53-.84 2.44.89.07 1.8-.45 2.35-1.11z"/></svg>
           Download on iOS
         </a>
@@ -365,5 +427,105 @@
   </footer>
 
 </div>
+
+<!-- ============ WAITLIST MODAL ============ -->
+<div id="waitlist" class="wl-overlay" role="dialog" aria-modal="true" aria-labelledby="wl-title" aria-hidden="true">
+  <div class="wl-card">
+    <button class="wl-close" type="button" aria-label="Close waitlist dialog">&times;</button>
+    <span class="wl-badge">Coming soon to iOS</span>
+    <h2 id="wl-title" class="wl-title">Join the waitlist</h2>
+    <p class="wl-sub">ChaosCtrl is almost here. Drop your email and we'll tell you the moment it lands on the App Store.</p>
+    <form class="wl-form" id="wl-form" novalidate>
+      <input class="wl-input" id="wl-email" type="email" name="email" required autocomplete="email" placeholder="you@email.com" aria-label="Email address">
+      <button class="wl-submit" type="submit">Join the waitlist</button>
+    </form>
+    <div class="wl-note" id="wl-note">No spam — just one email when we launch.</div>
+    <div class="wl-success" id="wl-success" hidden>
+      <div class="wl-check" aria-hidden="true">&#10003;</div>
+      <div class="wl-success-title">You're on the list!</div>
+      <div class="wl-success-sub">We'll email you the moment ChaosCtrl goes live.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var overlay = document.getElementById('waitlist');
+  if (!overlay) return;
+  var form = document.getElementById('wl-form');
+  var email = document.getElementById('wl-email');
+  var note = document.getElementById('wl-note');
+  var success = document.getElementById('wl-success');
+  var closeBtn = overlay.querySelector('.wl-close');
+  var lastFocused = null;
+
+  // To actually collect emails, set ENDPOINT to a POST URL that accepts JSON
+  // {email} — e.g. a Formspree form or a Cloudflare Worker route. Left empty
+  // for now: the form still confirms to the user client-side.
+  var ENDPOINT = '';
+
+  function open(e) {
+    if (e) e.preventDefault();
+    lastFocused = document.activeElement;
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    window.setTimeout(function () { if (email) email.focus(); }, 80);
+  }
+  function close() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  var triggers = document.querySelectorAll('[data-waitlist]');
+  for (var i = 0; i < triggers.length; i++) triggers[i].addEventListener('click', open);
+
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+  });
+  // keep focus inside the dialog while open
+  overlay.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(
+      overlay.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])'),
+      function (el) { return el.offsetParent !== null; }
+    );
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  function showSuccess() {
+    form.hidden = true;
+    if (note) note.hidden = true;
+    success.hidden = false;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = (email.value || '').trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
+      if (email.reportValidity) email.reportValidity(); else email.focus();
+      return;
+    }
+    if (ENDPOINT) {
+      var btn = form.querySelector('.wl-submit');
+      if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
+      fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: v })
+      }).then(showSuccess, showSuccess);
+    } else {
+      showSuccess();
+    }
+  });
+})();
+</script>
 </body>
 </html>
