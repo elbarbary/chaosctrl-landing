@@ -1,0 +1,9 @@
+{
+  // Deploys this repo to Cloudflare as a static-asset site (no Worker script).
+  // `npx wrangler deploy` uploads everything in `directory` and serves it.
+  "name": "chaosctrl-landing",
+  "compatibility_date": "2026-07-23",
+  "assets": {
+    "directory": "."
+  }
+}

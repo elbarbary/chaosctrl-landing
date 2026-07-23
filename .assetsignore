@@ -1,0 +1,7 @@
+# Files that should NOT be served as part of the public static site.
+# (gitignore syntax; used by `wrangler deploy`)
+wrangler.jsonc
+.assetsignore
+*-source.html
+README.md
+.gitignore
