@@ -1,9 +1,18 @@
 {
-  // Deploys this repo to Cloudflare as a static-asset site (no Worker script).
-  // `npx wrangler deploy` uploads everything in `directory` and serves it.
+  // Deploys this repo to Cloudflare as a Worker that serves the static site
+  // AND handles the waitlist API (POST /api/waitlist) backed by a D1 database.
   "name": "chaosctrl-landing",
   "compatibility_date": "2026-07-23",
+  "main": "worker.js",
   "assets": {
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "chaosctrl_waitlist",
+      "database_id": "f03eb63f-df75-4bb5-8950-b9a540a4fdd7"
+    }
+  ]
 }

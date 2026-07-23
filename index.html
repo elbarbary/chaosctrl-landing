@@ -459,10 +459,8 @@
   var closeBtn = overlay.querySelector('.wl-close');
   var lastFocused = null;
 
-  // To actually collect emails, set ENDPOINT to a POST URL that accepts JSON
-  // {email} — e.g. a Formspree form or a Cloudflare Worker route. Left empty
-  // for now: the form still confirms to the user client-side.
-  var ENDPOINT = '';
+  // Posts { email } to our Cloudflare Worker (worker.js), which stores it in D1.
+  var ENDPOINT = '/api/waitlist';
 
   function open(e) {
     if (e) e.preventDefault();

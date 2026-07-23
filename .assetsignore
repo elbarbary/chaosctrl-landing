@@ -2,6 +2,8 @@
 # (gitignore syntax; used by `wrangler deploy`)
 wrangler.jsonc
 .assetsignore
+worker.js
+schema.sql
 *-source.html
 README.md
 .gitignore
