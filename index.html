@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChaosCtrl — The calm at the center of your chaos</title>
+<meta name="description" content="ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds to scroll. No lists to maintain. Just answers.">
+<meta name="theme-color" content="#EAECF6">
+<link rel="canonical" href="https://elbarbary.github.io/chaosctrl-landing/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- Open Graph / social. Update these absolute URLs if you deploy to a custom domain. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://elbarbary.github.io/chaosctrl-landing/">
+<meta property="og:title" content="ChaosCtrl — The calm at the center of your chaos">
+<meta property="og:description" content="ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds. No lists. Just answers.">
+<meta property="og:image" content="https://elbarbary.github.io/chaosctrl-landing/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ChaosCtrl — the calm at the center of your chaos. An iOS second brain.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChaosCtrl — The calm at the center of your chaos">
+<meta name="twitter:description" content="Your second brain that surfaces the one thing that needs you now, and drafts the reply for you.">
+<meta name="twitter:image" content="https://elbarbary.github.io/chaosctrl-landing/og-image.png">
+<meta name="twitter:image:alt" content="ChaosCtrl — the calm at the center of your chaos.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    color: #0E1220;
+    background: #EAECF6;
+  }
+  h1, h2, h3, .display { font-family: "Inter Tight", -apple-system, system-ui, sans-serif; }
+  a { color: #4E63E8; text-decoration: none; }
+  a:hover { color: #3D50D6; }
+  ::selection { background: rgba(120,140,250,0.3); }
+  @keyframes drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%,-4%) scale(1.08); } }
+  @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-5%,3%) scale(1.1); } }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .nav-links { display: none !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 44px !important; padding-top: 60px !important; }
+    .grid-3 { grid-template-columns: 1fr !important; }
+    .how-grid { grid-template-columns: 1fr !important; padding: 32px !important; gap: 34px !important; }
+  }
+  @media (max-width: 640px) {
+    .hero-title { font-size: 40px !important; letter-spacing: -1.2px !important; }
+    h2 { font-size: 32px !important; letter-spacing: -0.8px !important; }
+    .hero-cta { flex-wrap: wrap !important; }
+    .hero-cta > a { flex: 1 1 auto; justify-content: center; }
+    .testimonial-quote { font-size: 22px !important; }
+    .testimonial-card { padding: 44px 24px !important; }
+    .final-cta { padding: 52px 26px !important; }
+    .trust-strip { gap: 20px !important; padding: 22px 20px !important; }
+    .footer-row { flex-direction: column; align-items: flex-start !important; gap: 22px !important; }
+  }
+  @media (max-width: 400px) {
+    .hero-title { font-size: 33px !important; }
+    h2 { font-size: 28px !important; }
+    .phone { transform: scale(0.9); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div style="position: relative; width: 100%; overflow-x: clip; background: linear-gradient(180deg, #EEF0FA 0%, #E4E7F6 40%, #EAEAF4 100%);">
+
+  <!-- ambient color field behind all the glass -->
+  <div style="position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;">
+    <div style="position: absolute; top: -180px; left: -120px; width: 680px; height: 680px; border-radius: 50%; background: radial-gradient(circle, #8EA0FB 0%, rgba(142,160,251,0) 68%); filter: blur(20px); animation: drift 18s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 320px; right: -180px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, #B79BFB 0%, rgba(183,155,251,0) 68%); filter: blur(20px); animation: drift2 22s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 28%; left: 8%; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, #FF9E78 0%, rgba(255,158,120,0) 68%); filter: blur(24px); animation: drift 26s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 47%; right: 4%; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, #7BE0D0 0%, rgba(123,224,208,0) 68%); filter: blur(24px); animation: drift2 24s ease-in-out infinite;"></div>
+    <div style="position: absolute; top: 68%; left: -100px; width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, #8EA0FB 0%, rgba(142,160,251,0) 68%); filter: blur(22px); animation: drift 20s ease-in-out infinite;"></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <div style="position: sticky; top: 18px; z-index: 50; display: flex; justify-content: center; padding: 0 24px;">
+    <nav style="width: 100%; max-width: 1120px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 14px 12px 22px; border-radius: 22px; background: rgba(255,255,255,0.5); backdrop-filter: blur(24px) saturate(180%); -webkit-backdrop-filter: blur(24px) saturate(180%); border: 1px solid rgba(255,255,255,0.65); box-shadow: 0 8px 32px -12px rgba(40,50,90,0.28), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div style="display: flex; align-items: center; gap: 11px;">
+        <div style="width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(150deg, #7E93F7, #5066E8); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px -3px rgba(80,102,232,0.6), inset 0 1px 0 rgba(255,255,255,0.5);">
+          <svg viewBox="0 0 100 100" width="24" height="24" fill="none"><path d="M14 56 C 22 31 49 30 47 47 C 45 62 28 58 33 46 C 38 35 56 40 87 51" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-family: 'Inter Tight', -apple-system, system-ui, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.4px; color: #0E1220;">ChaosCtrl</span>
+      </div>
+      <div class="nav-links" style="display: flex; align-items: center; gap: 30px; font-size: 14.5px; font-weight: 500; color: #3A4056;">
+        <a href="#features" style="color: #3A4056;">Features</a>
+        <a href="#how" style="color: #3A4056;">How it works</a>
+        <a href="#pricing" style="color: #3A4056;">Pricing</a>
+      </div>
+      <a href="#pricing" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 14px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 14.5px; box-shadow: 0 6px 18px -6px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">Get the app</a>
+    </nav>
+  </div>
+
+  <main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero-grid" style="position: relative; z-index: 10; max-width: 1120px; margin: 0 auto; padding: 96px 24px 60px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 10px; border-radius: 999px; background: rgba(255,255,255,0.5); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.7); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); font-size: 13px; font-weight: 600; color: #4E4A7A;">
+        <span style="width: 7px; height: 7px; border-radius: 50%; background: #FF7A4A; box-shadow: 0 0 0 4px rgba(255,122,74,0.2);"></span>
+        Now capturing from any app
+      </div>
+      <h1 class="hero-title" style="font-size: 62px; line-height: 1.03; letter-spacing: -2px; font-weight: 800; margin: 22px 0 0; color: #0E1220; text-wrap: balance;">The calm at the center of your chaos.</h1>
+      <p style="font-size: 19px; line-height: 1.55; color: #454C63; margin: 22px 0 0; max-width: 480px; text-wrap: pretty;">ChaosCtrl watches everything on your plate and tells you the one thing that needs you right now. No feeds to scroll. No lists to maintain. Just answers.</p>
+      <div class="hero-cta" style="display: flex; align-items: center; gap: 14px; margin-top: 34px;">
+        <a href="#pricing" style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 16px; background: linear-gradient(150deg, #5468EC, #4E63E8); color: #FFFFFF; font-weight: 600; font-size: 16px; box-shadow: 0 12px 30px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.25);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.05 12.53c-.02-2.02 1.65-2.99 1.72-3.04-.94-1.37-2.4-1.56-2.92-1.58-1.24-.13-2.42.73-3.05.73-.63 0-1.6-.71-2.63-.69-1.35.02-2.6.79-3.29 2-1.4 2.44-.36 6.05 1 8.03.67.97 1.46 2.06 2.5 2.02 1-.04 1.38-.65 2.6-.65 1.2 0 1.55.65 2.61.63 1.08-.02 1.76-.99 2.42-1.96.76-1.12 1.08-2.21 1.09-2.27-.02-.01-2.09-.8-2.11-3.18zM15.03 6.3c.55-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.53-.84 2.44.89.07 1.8-.45 2.35-1.11z"/></svg>
+          Download on iOS
+        </a>
+        <a href="#how" style="display: inline-flex; align-items: center; gap: 8px; padding: 15px 22px; border-radius: 16px; background: rgba(255,255,255,0.55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.75); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9); color: #2A3048; font-weight: 600; font-size: 16px;">See how it works</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 30px; font-size: 13.5px; color: #5A607A;">
+        <div style="display: flex;">
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,#8EA0FB,#5066E8); border: 2px solid rgba(255,255,255,0.9); margin-right: -9px;"></div>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,#FF9E78,#FF7A4A); border: 2px solid rgba(255,255,255,0.9); margin-right: -9px;"></div>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,#7BE0D0,#2FB8A3); border: 2px solid rgba(255,255,255,0.9); margin-right: -9px;"></div>
+          <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg,#B79BFB,#8A5CF0); border: 2px solid rgba(255,255,255,0.9);"></div>
+        </div>
+        <span><strong style="color:#2A3048;">12,000+</strong> people ended the day in control</span>
+      </div>
+    </div>
+
+    <!-- glass phone (decorative product illustration) -->
+    <div aria-hidden="true" style="display: flex; justify-content: center; animation: floaty 7s ease-in-out infinite;">
+      <div class="phone" style="position: relative; width: 300px; height: 620px; border-radius: 52px; padding: 12px; background: linear-gradient(160deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2)); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%); border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 40px 80px -24px rgba(50,55,110,0.45), inset 0 1px 0 rgba(255,255,255,0.9);">
+        <div style="position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden; background: linear-gradient(180deg, #F3F4FC 0%, #E9EBF8 100%); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);">
+          <!-- status bar -->
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px 6px; font-size: 13px; font-weight: 700; color: #1C2036;">
+            <span>9:41</span>
+            <span style="display:flex; gap:5px; align-items:center;"><span style="width:16px;height:10px;border:1.5px solid #1C2036;border-radius:3px;display:inline-block;"></span></span>
+          </div>
+          <!-- brief -->
+          <div style="padding: 10px 20px 0;">
+            <div style="font-size: 13px; color: #7A809A; font-weight: 600;">Wednesday, good morning</div>
+            <div style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size: 22px; font-weight: 700; letter-spacing: -0.4px; color: #141830; margin-top: 3px;">3 things, 1 needs you now</div>
+          </div>
+          <!-- up next hero card -->
+          <div style="margin: 16px 16px 0; padding: 18px; border-radius: 22px; background: linear-gradient(155deg, #6B82F5, #4E63E8); box-shadow: 0 14px 26px -12px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.35);">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:11px; font-weight:700; letter-spacing:0.4px; color:rgba(255,255,255,0.8);">UP NEXT</span>
+              <span style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.85); background:rgba(255,255,255,0.18); padding:3px 8px; border-radius:8px;">in 25 min</span>
+            </div>
+            <div style="font-size:17px; font-weight:700; color:#fff; margin-top:10px; line-height:1.3;">Reply to Dana before the 10:30 sync</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.82); margin-top:6px;">She's waiting on the Q3 numbers</div>
+            <div style="display:flex; gap:8px; margin-top:14px;">
+              <div style="flex:1; text-align:center; padding:9px; border-radius:12px; background:rgba(255,255,255,0.9); color:#3D50D6; font-size:13px; font-weight:700;">Do it now</div>
+              <div style="padding:9px 14px; border-radius:12px; background:rgba(255,255,255,0.16); color:#fff; font-size:13px; font-weight:600;">Snooze</div>
+            </div>
+          </div>
+          <!-- timeline -->
+          <div style="margin: 16px 16px 0;">
+            <div style="font-size:12px; font-weight:700; color:#8A90AA; letter-spacing:0.3px; margin-bottom:8px;">TODAY</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="display:flex; align-items:center; gap:11px; padding:11px 13px; border-radius:14px; background:rgba(255,255,255,0.72); border:1px solid rgba(255,255,255,0.8); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);">
+                <div style="width:8px;height:8px;border-radius:50%;background:#2FB8A3;"></div>
+                <span style="font-size:13.5px; font-weight:600; color:#242A42;">Standup</span>
+                <span style="margin-left:auto; font-size:12px; color:#9096B0;">10:30</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:11px; padding:11px 13px; border-radius:14px; background:rgba(255,255,255,0.72); border:1px solid rgba(255,255,255,0.8); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);">
+                <div style="width:8px;height:8px;border-radius:50%;background:#FF7A4A;"></div>
+                <span style="font-size:13.5px; font-weight:600; color:#242A42;">Dentist</span>
+                <span style="margin-left:auto; font-size:12px; color:#9096B0;">2:00</span>
+              </div>
+            </div>
+          </div>
+          <!-- capture bar -->
+          <div style="position:absolute; bottom:18px; left:16px; right:16px; display:flex; align-items:center; gap:10px; padding:13px 16px; border-radius:18px; background:rgba(255,255,255,0.6); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border:1px solid rgba(255,255,255,0.8); box-shadow:0 10px 24px -10px rgba(50,55,110,0.35), inset 0 1px 0 rgba(255,255,255,0.9);">
+            <div style="width:26px;height:26px;border-radius:9px;background:linear-gradient(150deg,#7E93F7,#5066E8);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700;line-height:1;">+</div>
+            <span style="font-size:13.5px; color:#7A809A;">Capture anything…</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO / TRUST STRIP ============ -->
+  <section style="position: relative; z-index: 10; max-width: 1120px; margin: 20px auto 0; padding: 0 24px;">
+    <div class="trust-strip" style="display:flex; align-items:center; justify-content:center; gap:44px; flex-wrap:wrap; padding:22px 32px; border-radius:24px; background:rgba(255,255,255,0.4); backdrop-filter:blur(22px) saturate(160%); -webkit-backdrop-filter:blur(22px) saturate(160%); border:1px solid rgba(255,255,255,0.6); box-shadow:inset 0 1px 0 rgba(255,255,255,0.8);">
+      <span style="font-size:13px; font-weight:600; color:#63698A;">Connects with the tools you already live in</span>
+      <div style="display:flex; gap:34px; align-items:center; flex-wrap:wrap; justify-content:center; font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-weight:700; font-size:17px; color:#565C78;">
+        <span>Gmail</span><span>Slack</span><span>Teams</span><span>Outlook</span><span>Telegram</span><span>Calendar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section id="features" style="position: relative; z-index: 10; max-width: 1120px; margin: 96px auto 0; padding: 0 24px;">
+    <div style="text-align:center; max-width:640px; margin:0 auto;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.2px; color:#5F66E8; text-transform:uppercase;">What it does</div>
+      <h2 style="font-size:46px; line-height:1.06; letter-spacing:-1.4px; font-weight:800; margin:14px 0 0; color:#0E1220;">Everything you're juggling, distilled to what matters.</h2>
+      <p style="font-size:18px; color:#454C63; margin:18px 0 0; line-height:1.55;">Reads every message, hides the noise, and hands you the reply.</p>
+    </div>
+
+    <div class="grid-3" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; margin-top:52px;">
+      <!-- card 1 -->
+      <div style="padding:30px; border-radius:28px; background:rgba(255,255,255,0.5); backdrop-filter:blur(26px) saturate(170%); -webkit-backdrop-filter:blur(26px) saturate(170%); border:1px solid rgba(255,255,255,0.7); box-shadow:0 20px 46px -22px rgba(50,55,110,0.4), inset 0 1px 0 rgba(255,255,255,0.9);">
+        <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(150deg,#7E93F7,#5066E8);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -6px rgba(80,102,232,0.6), inset 0 1px 0 rgba(255,255,255,0.4);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L3 14 h9 l-1 8 L21 10 h-9z"/></svg>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; letter-spacing:-0.5px; margin:20px 0 0; color:#141830;">Signal from the noise</h3>
+        <p style="font-size:15px; line-height:1.55; color:#4C5370; margin:10px 0 0;">ChaosCtrl reads every incoming message across your accounts, hides the clutter, and surfaces only what actually needs a human — you.</p>
+      </div>
+      <!-- card 2 -->
+      <div style="padding:30px; border-radius:28px; background:rgba(255,255,255,0.5); backdrop-filter:blur(26px) saturate(170%); -webkit-backdrop-filter:blur(26px) saturate(170%); border:1px solid rgba(255,255,255,0.7); box-shadow:0 20px 46px -22px rgba(50,55,110,0.4), inset 0 1px 0 rgba(255,255,255,0.9);">
+        <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(150deg,#FF9E78,#FF7A4A);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -6px rgba(255,122,74,0.55), inset 0 1px 0 rgba(255,255,255,0.4);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; letter-spacing:-0.5px; margin:20px 0 0; color:#141830;">Drafts the reply for you</h3>
+        <p style="font-size:15px; line-height:1.55; color:#4C5370; margin:10px 0 0;">It reads the thread and learns your tone, then writes a reply you can send in one tap. Edit it or fire it off.</p>
+      </div>
+      <!-- card 3 -->
+      <div style="padding:30px; border-radius:28px; background:rgba(255,255,255,0.5); backdrop-filter:blur(26px) saturate(170%); -webkit-backdrop-filter:blur(26px) saturate(170%); border:1px solid rgba(255,255,255,0.7); box-shadow:0 20px 46px -22px rgba(50,55,110,0.4), inset 0 1px 0 rgba(255,255,255,0.9);">
+        <div style="width:52px;height:52px;border-radius:16px;background:linear-gradient(150deg,#7BE0D0,#2FB8A3);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -6px rgba(47,184,163,0.55), inset 0 1px 0 rgba(255,255,255,0.4);">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 L9 11 l4 4 L21 7"/><path d="M21 7 v5 M21 7 h-5"/></svg>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; letter-spacing:-0.5px; margin:20px 0 0; color:#141830;">Your whole day, one screen</h3>
+        <p style="font-size:15px; line-height:1.55; color:#4C5370; margin:10px 0 0;">Flow merges messages, meetings, and tasks from every account into one calm timeline of what is next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BIG FEATURE / HOW ============ -->
+  <section id="how" style="position: relative; z-index: 10; max-width: 1120px; margin: 100px auto 0; padding: 0 24px;">
+    <div class="how-grid" style="display:grid; grid-template-columns: 0.95fr 1.05fr; gap:52px; align-items:center; padding:44px; border-radius:36px; background:rgba(255,255,255,0.42); backdrop-filter:blur(28px) saturate(170%); -webkit-backdrop-filter:blur(28px) saturate(170%); border:1px solid rgba(255,255,255,0.65); box-shadow:0 30px 70px -30px rgba(50,55,110,0.45), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div>
+        <div style="font-size:13px; font-weight:700; letter-spacing:1.2px; color:#FF7A4A; text-transform:uppercase;">Capture anywhere</div>
+        <h2 style="font-size:40px; line-height:1.08; letter-spacing:-1.2px; font-weight:800; margin:14px 0 0; color:#0E1220;">Share anything into ChaosCtrl.</h2>
+        <p style="font-size:17px; line-height:1.58; color:#454C63; margin:18px 0 0;">A stray thought, a task buried in a voice note, a screenshot of a bill — hit Share from any app on your phone and it lands in the right place: categorized, scheduled, and surfaced the moment it matters.</p>
+        <div style="display:flex; flex-direction:column; gap:14px; margin-top:26px;">
+          <div style="display:flex; align-items:center; gap:12px; font-size:15.5px; color:#2E3450; font-weight:500;"><span style="width:24px;height:24px;border-radius:8px;background:rgba(94,102,232,0.14);display:flex;align-items:center;justify-content:center;color:#4E63E8;font-weight:800;">✓</span> Voice notes transcribed and filed</div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:15.5px; color:#2E3450; font-weight:500;"><span style="width:24px;height:24px;border-radius:8px;background:rgba(94,102,232,0.14);display:flex;align-items:center;justify-content:center;color:#4E63E8;font-weight:800;">✓</span> Screenshots read for dates and amounts</div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:15.5px; color:#2E3450; font-weight:500;"><span style="width:24px;height:24px;border-radius:8px;background:rgba(94,102,232,0.14);display:flex;align-items:center;justify-content:center;color:#4E63E8;font-weight:800;">✓</span> Nothing to organize by hand</div>
+        </div>
+      </div>
+      <!-- chat glass mock (decorative product illustration) -->
+      <div aria-hidden="true" style="border-radius:28px; padding:22px; background:linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.25)); border:1px solid rgba(255,255,255,0.7); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 20px 46px -24px rgba(50,55,110,0.4);">
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="align-self:flex-end; max-width:78%; padding:12px 16px; border-radius:20px 20px 6px 20px; background:linear-gradient(150deg,#6B82F5,#4E63E8); color:#fff; font-size:14.5px; line-height:1.45; box-shadow:0 8px 18px -8px rgba(78,99,232,0.6);">Pick up dry cleaning before Friday, and remind me to call the plumber</div>
+          <div style="align-self:flex-start; max-width:82%; padding:14px 16px; border-radius:20px 20px 20px 6px; background:rgba(255,255,255,0.85); border:1px solid rgba(255,255,255,0.9); font-size:14.5px; line-height:1.5; color:#2A3048; box-shadow:0 8px 18px -10px rgba(50,55,110,0.3);">
+            Got it — added two things:
+            <div style="margin-top:10px; display:flex; flex-direction:column; gap:8px;">
+              <div style="display:flex; align-items:center; gap:9px; padding:9px 11px; border-radius:12px; background:rgba(94,102,232,0.08);"><span style="width:7px;height:7px;border-radius:50%;background:#FF7A4A;"></span><span style="font-weight:600; font-size:13.5px;">Dry cleaning</span><span style="margin-left:auto; font-size:12px; color:#8A90AA;">by Fri</span></div>
+              <div style="display:flex; align-items:center; gap:9px; padding:9px 11px; border-radius:12px; background:rgba(94,102,232,0.08);"><span style="width:7px;height:7px;border-radius:50%;background:#2FB8A3;"></span><span style="font-weight:600; font-size:13.5px;">Call plumber</span><span style="margin-left:auto; font-size:12px; color:#8A90AA;">today</span></div>
+            </div>
+          </div>
+          <div style="align-self:flex-start; font-size:12px; color:#9096B0; padding-left:6px;">via Share Sheet · just now</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section style="position: relative; z-index: 10; max-width: 1120px; margin: 80px auto 0; padding: 0 24px;">
+    <div class="grid-3" style="display:grid; grid-template-columns: repeat(3,1fr); gap:22px;">
+      <div style="text-align:center; padding:34px 20px; border-radius:26px; background:rgba(255,255,255,0.46); backdrop-filter:blur(24px) saturate(160%); -webkit-backdrop-filter:blur(24px) saturate(160%); border:1px solid rgba(255,255,255,0.65); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 18px 40px -24px rgba(50,55,110,0.35);">
+        <div style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size:46px; font-weight:800; letter-spacing:-1.5px; background:linear-gradient(150deg,#6B82F5,#4E63E8); -webkit-background-clip:text; background-clip:text; color:transparent;">40 min</div>
+        <div style="font-size:14.5px; color:#4C5370; margin-top:6px; font-weight:500;">saved on planning every day</div>
+      </div>
+      <div style="text-align:center; padding:34px 20px; border-radius:26px; background:rgba(255,255,255,0.46); backdrop-filter:blur(24px) saturate(160%); -webkit-backdrop-filter:blur(24px) saturate(160%); border:1px solid rgba(255,255,255,0.65); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 18px 40px -24px rgba(50,55,110,0.35);">
+        <div style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size:46px; font-weight:800; letter-spacing:-1.5px; background:linear-gradient(150deg,#FF9E78,#FF7A4A); -webkit-background-clip:text; background-clip:text; color:transparent;">92%</div>
+        <div style="font-size:14.5px; color:#4C5370; margin-top:6px; font-weight:500;">say they drop fewer balls</div>
+      </div>
+      <div style="text-align:center; padding:34px 20px; border-radius:26px; background:rgba(255,255,255,0.46); backdrop-filter:blur(24px) saturate(160%); -webkit-backdrop-filter:blur(24px) saturate(160%); border:1px solid rgba(255,255,255,0.65); box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 18px 40px -24px rgba(50,55,110,0.35);">
+        <div style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size:46px; font-weight:800; letter-spacing:-1.5px; background:linear-gradient(150deg,#7BE0D0,#2FB8A3); -webkit-background-clip:text; background-clip:text; color:transparent;">4.9★</div>
+        <div style="font-size:14.5px; color:#4C5370; margin-top:6px; font-weight:500;">average App Store rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section style="position: relative; z-index: 10; max-width: 860px; margin: 96px auto 0; padding: 0 24px;">
+    <div class="testimonial-card" style="text-align:center; padding:52px 48px; border-radius:34px; background:rgba(255,255,255,0.44); backdrop-filter:blur(28px) saturate(170%); -webkit-backdrop-filter:blur(28px) saturate(170%); border:1px solid rgba(255,255,255,0.65); box-shadow:0 30px 70px -30px rgba(50,55,110,0.45), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div role="img" aria-label="Rated 5 out of 5 stars" style="font-size:15px; color:#FF7A4A; letter-spacing:3px;">★★★★★</div>
+      <p class="testimonial-quote" style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size:28px; line-height:1.4; font-weight:600; letter-spacing:-0.6px; color:#1A1F38; margin:20px 0 0; text-wrap:balance;">"I stopped waking up with a knot in my chest. I open one screen and it just tells me what to do first. That's the whole app, and it's everything."</p>
+      <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-top:26px;">
+        <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#B79BFB,#8A5CF0);border:2px solid rgba(255,255,255,0.9);"></div>
+        <div style="text-align:left;">
+          <div style="font-size:15px; font-weight:700; color:#1A1F38;">Priya Menon</div>
+          <div style="font-size:13px; color:#63698A;">Founder &amp; solo parent</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section id="pricing" style="position: relative; z-index: 10; max-width: 1120px; margin: 100px auto 0; padding: 0 24px;">
+    <div style="text-align:center; max-width:600px; margin:0 auto;">
+      <div style="font-size:13px; font-weight:700; letter-spacing:1.2px; color:#5F66E8; text-transform:uppercase;">Pricing</div>
+      <h2 style="font-size:46px; line-height:1.06; letter-spacing:-1.4px; font-weight:800; margin:14px 0 0; color:#0E1220;">One plan while we are in early access.</h2>
+      <p style="font-size:17px; color:#454C63; margin:16px 0 0; line-height:1.55;">$1.99 a month, cancel anytime. More power tiers arrive as ChaosCtrl grows with you.</p>
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr; gap:24px; margin-top:48px; max-width:440px; margin-left:auto; margin-right:auto;">
+      <!-- early access -->
+      <div style="position:relative; padding:34px; border-radius:30px; background:linear-gradient(160deg, #5468EC, #4657DE); border:1px solid rgba(255,255,255,0.35); box-shadow:0 30px 64px -22px rgba(78,99,232,0.7), inset 0 1px 0 rgba(255,255,255,0.4); overflow:hidden;">
+        <div style="position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%); filter:blur(4px);"></div>
+        <div style="display:flex; align-items:center; gap:10px;"><span style="font-size:16px; font-weight:700; color:#fff;">Early Access</span><span style="font-size:11px; font-weight:700; color:#4E63E8; background:#fff; padding:3px 9px; border-radius:8px;">INTRO PRICING</span></div>
+        <div style="margin-top:14px; display:flex; align-items:baseline; gap:4px;"><span style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-size:44px; font-weight:800; letter-spacing:-1.5px; color:#fff;">$1.99</span><span style="color:rgba(255,255,255,0.8); font-size:15px;">/ month</span></div>
+        <p style="font-size:14px; color:rgba(255,255,255,0.85); margin:8px 0 0;">The full second brain, at intro pricing.</p>
+        <div style="height:1px; background:rgba(255,255,255,0.25); margin:22px 0;"></div>
+        <div style="display:flex; flex-direction:column; gap:12px; font-size:14.5px; color:#fff;">
+          <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> Triage across all your accounts</div>
+          <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> Share-sheet capture from any app</div>
+          <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> 1,500 signals sorted a month</div>
+          <div style="display:flex; gap:10px;"><span style="color:#fff; font-weight:800;">✓</span> 100 AI-drafted replies a month</div>
+        </div>
+        <a href="#" style="display:block; text-align:center; margin-top:26px; padding:14px; border-radius:15px; background:#fff; color:#3D50D6; font-weight:700; font-size:15px; box-shadow:0 10px 24px -8px rgba(0,0,0,0.25);">Get ChaosCtrl — $1.99/mo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section style="position: relative; z-index: 10; max-width: 1120px; margin: 100px auto 0; padding: 0 24px;">
+    <div class="final-cta" style="position:relative; text-align:center; padding:72px 48px; border-radius:40px; overflow:hidden; background:linear-gradient(155deg, rgba(255,255,255,0.5), rgba(255,255,255,0.22)); backdrop-filter:blur(30px) saturate(180%); -webkit-backdrop-filter:blur(30px) saturate(180%); border:1px solid rgba(255,255,255,0.7); box-shadow:0 40px 90px -34px rgba(50,55,110,0.5), inset 0 1px 0 rgba(255,255,255,0.9);">
+      <div style="position:absolute; inset:0; z-index:0; pointer-events:none;">
+        <div style="position:absolute; top:-60px; left:20%; width:280px; height:280px; border-radius:50%; background:radial-gradient(circle,#8EA0FB,transparent 68%); filter:blur(20px); opacity:0.7;"></div>
+        <div style="position:absolute; bottom:-80px; right:16%; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle,#FF9E78,transparent 68%); filter:blur(24px); opacity:0.6;"></div>
+      </div>
+      <div style="position:relative; z-index:1;">
+        <div style="width:64px;height:64px;border-radius:19px;margin:0 auto;background:linear-gradient(150deg,#7E93F7,#5066E8);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 26px -8px rgba(80,102,232,0.6), inset 0 1px 0 rgba(255,255,255,0.45);">
+          <svg viewBox="0 0 100 100" width="44" height="44" fill="none"><path d="M14 56 C 22 31 49 30 47 47 C 45 62 28 58 33 46 C 38 35 56 40 87 51" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2 style="font-size:48px; line-height:1.05; letter-spacing:-1.6px; font-weight:800; margin:24px 0 0; color:#0E1220; text-wrap:balance;">End today in control.</h2>
+        <p style="font-size:18px; color:#454C63; margin:16px auto 0; max-width:460px; line-height:1.55;">$1.99 a month, cancel anytime. Your calmest morning is one download away.</p>
+        <a href="#" style="display:inline-flex; align-items:center; gap:10px; margin-top:32px; padding:16px 30px; border-radius:17px; background:linear-gradient(150deg,#5468EC,#4E63E8); color:#fff; font-weight:700; font-size:16.5px; box-shadow:0 14px 32px -10px rgba(78,99,232,0.75), inset 0 1px 0 rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.25);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.05 12.53c-.02-2.02 1.65-2.99 1.72-3.04-.94-1.37-2.4-1.56-2.92-1.58-1.24-.13-2.42.73-3.05.73-.63 0-1.6-.71-2.63-.69-1.35.02-2.6.79-3.29 2-1.4 2.44-.36 6.05 1 8.03.67.97 1.46 2.06 2.5 2.02 1-.04 1.38-.65 2.6-.65 1.2 0 1.55.65 2.61.63 1.08-.02 1.76-.99 2.42-1.96.76-1.12 1.08-2.21 1.09-2.27-.02-.01-2.09-.8-2.11-3.18zM15.03 6.3c.55-.67.93-1.6.83-2.53-.8.03-1.77.53-2.34 1.2-.51.59-.96 1.53-.84 2.44.89.07 1.8-.45 2.35-1.11z"/></svg>
+          Download on iOS
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="position: relative; z-index: 10; max-width: 1120px; margin: 72px auto 0; padding: 36px 24px 56px;">
+    <div class="footer-row" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-bottom:28px; border-bottom:1px solid rgba(30,40,90,0.1);">
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(150deg,#7E93F7,#5066E8);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 100 100" width="20" height="20" fill="none"><path d="M14 56 C 22 31 49 30 47 47 C 45 62 28 58 33 46 C 38 35 56 40 87 51" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span style="font-family:'Inter Tight', -apple-system, system-ui, sans-serif; font-weight:700; font-size:16px; color:#141830;">ChaosCtrl</span>
+      </div>
+      <div style="display:flex; gap:28px; font-size:14px; color:#5A607A; flex-wrap:wrap;">
+        <a href="#features" style="color:#5A607A;">Features</a>
+        <a href="#pricing" style="color:#5A607A;">Pricing</a>
+        <a href="#" style="color:#5A607A;">Privacy</a>
+        <a href="#" style="color:#5A607A;">Support</a>
+      </div>
+    </div>
+    <div style="font-size:13px; color:#565C78; margin-top:22px;">© 2026 ChaosCtrl. Made for people with a lot on their plate.</div>
+  </footer>
+
+</div>
+</body>
+</html>
